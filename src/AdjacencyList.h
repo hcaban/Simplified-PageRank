@@ -8,17 +8,10 @@
 class AdjacencyList
 {
 private:
-    int totalVertices, totalEdges;
-
     // adjList[from][to] = rank(from) / outdegree(from)
-    //std::unordered_map<std::string, Vertex> adjList;
     std::unordered_map<std::string, std::unordered_map<std::string, double>>  adjList;
 
-
 public:
-    // Default Constructor
-    AdjacencyList();
-
     /*
     Creates edge between from and to vertices
     Creates the vertices aswell if they do not exists yet

@@ -1,15 +1,11 @@
 #include "AdjacencyList.h"
 
 
-AdjacencyList::AdjacencyList()
-{
-    totalVertices = 0;
-    totalEdges = 0;
-}
-
-
 bool AdjacencyList::addEdge(std::string from, std::string to)
 {
+    // Check this section there might be something wrong with the initialization
+    // Simulate test case 1 on paper
+
     if (adjList.find(from) != adjList.end() && adjList[from].find(to) != adjList[from].end())
         return false;
 
@@ -18,10 +14,10 @@ bool AdjacencyList::addEdge(std::string from, std::string to)
     if (adjList.find(to) == adjList.end())
         adjList[to];
 
-    double outdegree = adjList[from].size();
+    double rank = 1 / (double)adjList[from].size();
 
-    for (auto& list : adjList)
-        list.second[to] = 1 / outdegree;
+    for (auto& adjVertex : adjList[from])
+        adjVertex.second = rank;
 
     return true;
 }
@@ -46,11 +42,11 @@ std::map<std::string, double> AdjacencyList::getPageRank(int p)
 
         for (const auto& row : adjList)
         {
-            rankVectorPrime[row.first] = 0;
+            //rankVectorPrime[row.first] = 0.00;
 
             for (const auto& column : row.second)
             {
-                rankVectorPrime[row.first] += column.second * rankVector[column.first];
+                rankVectorPrime[column.first] += column.second * rankVector[row.first];
             }
         }
 
