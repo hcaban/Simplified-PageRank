@@ -1,22 +1,8 @@
 #pragma once
 
+#include <map>
 #include <unordered_map>
 #include <string>
-
-
-struct Vertex
-{
-    std::unordered_map<std::string, Vertex*> adjVertices;
-
-    int indegree;
-    int outdegree;
-    int rank;
-
-    Vertex();
-    Vertex(std::string to);
-
-    double operator[](std::string to);
-};
 
 
 class AdjacencyList
@@ -25,7 +11,9 @@ private:
     int totalVertices, totalEdges;
 
     // adjList[from][to] = rank(from) / outdegree(from)
-    std::unordered_map<std::string, Vertex> adjList;
+    //std::unordered_map<std::string, Vertex> adjList;
+    std::unordered_map<std::string, std::unordered_map<std::string, double>>  adjList;
+
 
 public:
     // Default Constructor
@@ -44,7 +32,5 @@ public:
     p powerIterations in ascending alphabetical order of webpages 
     and rounding rank to two decimal places
     */
-    std::unordered_map<std::string, double> getPageRank(int p);
-
-
+    std::map<std::string, double> getPageRank(int p);
 };

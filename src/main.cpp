@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "AdjacencyList.h"
 
 
@@ -20,5 +21,17 @@ int main()
         graph.addEdge(from, to);
     }
 
-    // (UNCOMMENT) Created_Graph.PageRank(power_iterations);
+    auto pageRankVector = graph.getPageRank(power_iterations);
+
+    for (const auto& page : pageRankVector)
+    {
+        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+        
+        std::cout << page.first << " " << page.second << '\n';
+    }
+
+    std::cout << std::flush;
+
+    return 0;
 }
+    

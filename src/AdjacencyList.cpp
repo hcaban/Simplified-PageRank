@@ -1,30 +1,6 @@
 #include "AdjacencyList.h"
 
 
-Vertex::Vertex()
-{
-    indegree = 0;
-    outdegree = 0;
-
-    
-}
-
-
-Vertex::Vertex(std::string to)
-{
-    indegree = 0;
-    outdegree = 1;
-
-    // adjVertices[to] = 
-}
-
-
-double Vertex::operator[](std::string to)
-{
-
-}
-
-
 AdjacencyList::AdjacencyList()
 {
     totalVertices = 0;
@@ -34,21 +10,52 @@ AdjacencyList::AdjacencyList()
 
 bool AdjacencyList::addEdge(std::string from, std::string to)
 {
-    if (!adjList.count(from))
-        adjList[from] = Vertex(to);
+    if (adjList.find(from) != adjList.end() && adjList[from].find(to) != adjList[from].end())
+        return false;
 
-    if (!adjList.count(to))
-        adjList[to] = Vertex();
+    adjList[from][to] = 0;
 
-    else
-        adjList[from][to];
+    if (adjList.find(to) == adjList.end())
+        adjList[to];
 
+    double outdegree = adjList[from].size();
 
+    for (auto& list : adjList)
+        list.second[to] = 1 / outdegree;
+
+    return true;
 }
 
 
-std::unordered_map<std::string, double> AdjacencyList::getPageRank(int p)
+std::map<std::string, double> AdjacencyList::getPageRank(int p)
 {
+    // Initialize rank vector
 
+    std::map<std::string, double> rankVector;
 
+    double initial = 1 / (double)adjList.size();
+
+    for (const auto& key : adjList)
+        rankVector[key.first] = initial;
+
+    // Begin power iterations
+
+    for (int i = 1; i < p; i++)
+    {
+        std::map<std::string, double> rankVectorPrime;
+
+        for (const auto& row : adjList)
+        {
+            rankVectorPrime[row.first] = 0;
+
+            for (const auto& column : row.second)
+            {
+                rankVectorPrime[row.first] += column.second * rankVector[column.first];
+            }
+        }
+
+        rankVector = rankVectorPrime;
+    }
+
+    return rankVector;
 }
