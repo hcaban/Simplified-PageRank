@@ -21,6 +21,7 @@ int main()
         graph.addEdge(from, to);
     }
 
+
     auto pageRankVector = graph.getPageRank(power_iterations);
 
     for (const auto& page : pageRankVector)

@@ -1,7 +1,7 @@
 CC=g++-12
 FLAGS=-std=c++14 -Wall -Werror
 
-BINARY=build/PageRank
+BINARY=bin/PageRank
 CPPFILES=src/main.cpp src/AdjacencyList.cpp
 HFILES=src/AdjacencyList.h
 SRCFILES=$(CPPFILES) $(HFILES)

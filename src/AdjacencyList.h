@@ -4,17 +4,18 @@
 #include <unordered_map>
 #include <string>
 
-
 class AdjacencyList
 {
 private:
-    // adjList[from][to] = rank(from) / outdegree(from)
+    /*
+    A
+    */
     std::unordered_map<std::string, std::unordered_map<std::string, double>>  adjList;
 
 public:
     /*
-    Creates edge between from and to vertices
-    Creates the vertices aswell if they do not exists yet
+    Creates directed edge between `from` and `to` vertices
+    Creates the vertices if they do not exists yet
 
     Returns bool, false if the edge already exists, true otherwise
     */
