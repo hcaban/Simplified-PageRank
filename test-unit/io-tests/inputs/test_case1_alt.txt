@@ -1,0 +1,26 @@
+7 100
+google.com gmail.com
+google.com maps.com
+facebook.com ufl.edu
+ufl.edu google.com
+ufl.edu gmail.com
+maps.com facebook.com
+gmail.com maps.com
+
+
+# urls = []
+
+# with open('test-unit/catch-tests/urls.txt', 'r', encoding='UTF-8') as file:
+#     urls = file.read().splitlines()
+
+# froms = ''
+# to = ''
+
+# for fromurl in urls:
+#     froms = fromurl
+#     for tourl in urls:
+#         to = tourl
+#         print(f'graph.addEdge({froms}, {to});')
+
+# for url in urls:
+#     print(f'REQUIRE(map[{url}] == );')

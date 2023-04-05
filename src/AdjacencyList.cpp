@@ -6,7 +6,7 @@ bool AdjacencyList::addEdge(std::string from, std::string to)
     // Check this section there might be something wrong with the initialization
     // Simulate test case 1 on paper
 
-    if (adjList.find(from) != adjList.end() && adjList[from].find(to) != adjList[from].end())
+    if ((adjList.find(from) != adjList.end() && adjList[from].find(to) != adjList[from].end()) || from == to)
         return false;
 
     adjList[from][to] = 0;

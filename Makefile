@@ -2,6 +2,7 @@ CC=g++-12
 FLAGS=-std=c++14 -Wall -Werror
 
 CPPFILES=src/main.cpp src/AdjacencyList.cpp
+TESTFILE=test-unit/catch-tests/test.cpp
 HFILES=src/AdjacencyList.h
 SRCFILES=$(CPPFILES) $(HFILES)
 
@@ -14,8 +15,8 @@ CATCHTEST=test-unit/catch-tests
 all: $(SRCFILES)
 	$(CC) $(FLAGS) -o $(BINARY) $(CPPFILES)
 
-test: $(SRCFILES) $(CATCHTEST)/test.cpp
-	$(CC) $(FLAGS) -o $(CATCHTEST)/test $(CATCHTEST)/test.cpp src/AdjacencyList.cpp
+test: $(SRCFILES) $(TESTFILE)
+	$(CC) $(FLAGS) -o bin/test $(CATCHTEST)/test.cpp src/AdjacencyList.cpp
 
 clean:
 	rm -rf $(BINARY)

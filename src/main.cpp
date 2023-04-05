@@ -2,6 +2,7 @@
 #include <iomanip>
 #include "AdjacencyList.h"
 
+#include <cmath>
 
 int main() 
 {
@@ -24,11 +25,11 @@ int main()
 
     auto pageRankVector = graph.getPageRank(power_iterations);
 
-    for (const auto& page : pageRankVector)
+    for (auto& page : pageRankVector)
     {
-        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+        //std::cout << std::fixed << std::showpoint << std::setprecision(2);
         
-        std::cout << page.first << " " << page.second << '\n';
+        std::cout << page.first << " " << trunc(round(page.second * 100)) / 100 << '\n';
     }
 
     std::cout << std::flush;
