@@ -1,8 +1,8 @@
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 #include "AdjacencyList.h"
 
-#include <cmath>
 
 int main() 
 {
@@ -29,7 +29,7 @@ int main()
     {
         //std::cout << std::fixed << std::showpoint << std::setprecision(2);
         
-        std::cout << page.first << " " << trunc(round(page.second * 100)) / 100 << '\n';
+        std::cout << page.first << " " << round(page.second * 100) / 100 << '\n';
     }
 
     std::cout << std::flush;

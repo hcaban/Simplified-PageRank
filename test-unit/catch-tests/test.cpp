@@ -2,8 +2,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-#include <iostream>
-// #include <sstream>
 
 TEST_CASE("Dense Graph with attempted self-loops", "[custom]") 
 {	
