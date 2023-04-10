@@ -7,9 +7,6 @@
 class AdjacencyList
 {
 private:
-    /*
-    A
-    */
     std::unordered_map<std::string, std::unordered_map<std::string, double>>  adjList;
 
 public:
@@ -23,8 +20,7 @@ public:
 
     /*
     Returns map representing the PageRank of all pages after 
-    p powerIterations in ascending alphabetical order of webpages 
-    and rounding rank to two decimal places
+    p powerIterations in ascending alphabetical order by webpage name
     */
     std::map<std::string, double> getPageRank(int p);
 };

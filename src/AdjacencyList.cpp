@@ -3,19 +3,20 @@
 
 bool AdjacencyList::addEdge(std::string from, std::string to)
 {
-    // Check this section there might be something wrong with the initialization
-    // Simulate test case 1 on paper
-
+    // Check if adjList[from][to] exists, returns false if it exists
     if ((adjList.find(from) != adjList.end() && adjList[from].find(to) != adjList[from].end()) || from == to)
         return false;
 
+    // Placeholder value
     adjList[from][to] = 0;
 
+    // Check if vertex "to" exists, creates it if it does not
     if (adjList.find(to) == adjList.end())
         adjList[to];
 
     double rank = 1 / (double)adjList[from].size();
 
+    // Update every vertex adjacent to "from" with new rank
     for (auto& adjVertex : adjList[from])
         adjVertex.second = rank;
 
@@ -36,10 +37,12 @@ std::map<std::string, double> AdjacencyList::getPageRank(int p)
 
     // Begin power iterations
 
+    // p power iterations
     for (int i = 1; i < p; i++)
     {
         std::map<std::string, double> rankVectorPrime;
 
+        // Begin matrix multiplication
         for (const auto& row : adjList)
         {
             //rankVectorPrime[row.first] = 0.00;
