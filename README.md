@@ -1,2 +1,3 @@
 # Simplified-PageRank
-COP3530 Project 2
+
+See Report.md in the docs directory
